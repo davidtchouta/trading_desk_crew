@@ -1,0 +1,41 @@
+---
+name: CI - Meal Grocery Planner (uv edition)
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Etape 1 : Cloner
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      # Etape 2 : Installer Python
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.12"
+
+      # Etape 3 : Installer uv
+      - name: Install uv
+        run: pip install uv
+
+      # Etape 4 : Installer les dépendances via uv (rapide grâce au lock file)
+      - name: Install dependencies
+        run: uv sync
+
+      # Etape 5 : Vérification qualité de code
+      - name: Lint with ruff
+        run: |
+          pip install ruff
+          ruff check .
+
+      # Etape 6 : Tests unitaires
+      - name: Run tests
+        run: uv run pytest --maxfail=1 --disable-warnings -q
