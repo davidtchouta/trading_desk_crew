@@ -1,0 +1,10 @@
+[project]
+name = "Meal_grocery_planner"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "langchain==0.3.20", "langchain-community==0.3.19", "crewai[tools]>=0.105.0", 
+    "databricks-sdk==0.57.0", "boto3==1.28.0",
+]
