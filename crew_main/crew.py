@@ -1,15 +1,12 @@
 from pydantic import BaseModel, Field
 from typing import List
-# from crewai import LLM
-
 from crewai import LLM, Agent, Crew, Process, Task
 from crewai.project import CrewBase, agent, crew, task
 from crewai_tools import SerperDevTool
-
 from dotenv import load_dotenv
-load_dotenv()
+import os
 
-
+load_dotenv()  # Charger les variables d'environnement depuis un fichier .env
 
 
 # Configuration pour Claude via AWS Bedrock
