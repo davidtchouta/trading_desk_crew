@@ -80,7 +80,7 @@ class MealPlannerCrew():
             config=self.tasks_config['meal_planning_task'],
             agent=self.meal_planner(),
             output_pydantic=MealPlan,
-            output_file='meals.json'
+            output_file='outputs/meals.json'
         )
     
     @agent
@@ -99,7 +99,7 @@ class MealPlannerCrew():
             agent=self.shopping_organizer(),
             depends_on=[self.meal_planning_task()],
             output_pydantic=GroceryShoppingPlan,
-            output_file='shopping_list.json'
+            output_file='outputs/shopping_list.json'
         )
 
     @agent
@@ -118,7 +118,7 @@ class MealPlannerCrew():
             config=self.tasks_config['budget_advisor_task'],
             agent=self.budget_advisor(),
             depends_on=[self.meal_planning_task(),self.shopping_organizer_task()],
-            output_file='shopping_guide.md'
+            output_file='outputs/shopping_guide.md'
         )
     
     @agent

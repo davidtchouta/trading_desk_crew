@@ -1,6 +1,6 @@
-# Multi Agent Meal Grocery Planner 🥗🛒 with CrewAI
+# Multi Agents Meal Grocery Planner 🥗🛒 with CrewAI
 
-**Meal Grocery Planner** is an AI-driven application designed to help users automatically generate weekly meal plans, organize grocery shopping lists, validate budget constraints, and suggest leftover usage.  
+**Meal Grocery Planner** is an AI-driven application designed to help users automatically generate weekly meal plans, organize grocery shopping lists, validate budget constraints, suggest leftover usage and respect your dietary restrictions (ie : no nuts).  
 The system leverages [CrewAI](https://github.com/joaomdmoura/crewai) to orchestrate multiple specialized **agents** working together in a collaborative workflow.
 
 ---
@@ -78,11 +78,12 @@ The workflow follows a **sequential process**:
 - **Purpose**: Generates ideas to reuse leftovers efficiently.
 - **Output**: JSON/Markdown suggestions
 
+
 ### Summary Agent
 - **Purpose**: Aggregates results from other agents into a final summary.
 - **Output**: Markdown or JSON
+- For more details, check the [Summary Agent Ouput](outputs/results.md).
 
----
 
 ## Getting Started
 
