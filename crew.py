@@ -1,8 +1,5 @@
 from pydantic import BaseModel, Field
-from typing import List, Dict, Optional
-from IPython.display import display, JSON, Markdown
-from datetime import datetime
-import os
+from typing import List
 
 from crewai import Agent, Crew, Process, Task
 from crewai.project import CrewBase, agent, crew, task

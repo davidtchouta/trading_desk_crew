@@ -1,10 +1,8 @@
 from pydantic import BaseModel, Field
-from typing import List, Dict, Optional
-from IPython.display import display, JSON, Markdown
-from datetime import datetime
-import os
+from typing import List
+# from crewai import LLM
 
-from crewai import Agent, Crew, Process, Task
+from crewai import LLM, Agent, Crew, Process, Task
 from crewai.project import CrewBase, agent, crew, task
 from crewai_tools import SerperDevTool
 
@@ -12,7 +10,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
-from crewai import LLM
+
 
 # Configuration pour Claude via AWS Bedrock
 # llm = LLM(

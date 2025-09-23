@@ -1,4 +1,3 @@
-import sys
 from crew import MealPlannerCrew
 
 from rich.console import Console

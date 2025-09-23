@@ -34,7 +34,7 @@ jobs:
       - name: Lint with ruff
         run: |
           pip install ruff
-          ruff check .
+          run: ruff check . --fix
 
       # Etape 6 : Tests unitaires
       - name: Run tests
