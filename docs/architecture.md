@@ -20,6 +20,4 @@ The following diagram illustrates the architecture and workflow:
 
 ![Architecture Diagram](screenshots/archi_agent_meal_manager.png)
 
-- **Left** → Multiple Agents (Meal Planner, Shopping Organizer, Budget Advisor, Leftover, Summary).  
-- **Center** → CrewAI (orchestration and sequential process).  
-- **Right** → Final Outputs (`meals.json`, `shopping_list.json`, `shopping_guide.md`, consolidated summary).
+Now we're ready to deploy your Agent into the production environment.

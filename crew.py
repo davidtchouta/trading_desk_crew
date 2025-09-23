@@ -20,10 +20,10 @@ load_dotenv()  # Charger les variables d'environnement depuis un fichier .env
 #     aws_region_name=os.getenv('REGION')
 # )
 
+
 llm = LLM(
-    # model="ollama/deepseek-r1:latest",
-    model="ollama/qwen2.5:7b",
-    base_url="http://localhost:11434"
+    model=os.getenv("MODEL", "ollama/qwen2.5:7b"),
+    base_url=os.getenv("OLLAMA_API_BASE", "http://localhost:11434")
 )
 
 
