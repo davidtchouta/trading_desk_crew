@@ -2,7 +2,7 @@
 
 Professional-grade **multi-agent system** simulating a trading desk with Trader, Risk Manager, and Compliance functions.
 
-**Screenshot**:  
+**Mutiagents Architecture*:  
 ![Agent Architecture](./docs/screenshots/archi_trading_agent.png)
 
 ---
@@ -19,7 +19,7 @@ Professional-grade **multi-agent system** simulating a trading desk with Trader,
 ---
 
 ## 🏗️ Architecture Diagram for production on AWS
-![Architecture Overview](./docs/screenshots/achi_trading_prod.png)
+![Architecture Overview](./docs/screenshots/archi_trading_prod.png)
 
 ---
 

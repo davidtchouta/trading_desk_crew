@@ -17,7 +17,8 @@ Each agent replicates the **real functions of a professional trading floor**.
   - JSON `TradeOrder` object with ticker, action, justification, suggested_size.
 
 **Screenshot**:  
-![Trader Console](screenshots/trader_order.png)
+<!-- ![Trader Console](screenshots/trader_order.png) -->
+<img src="screenshots/trader_order.png" style="height:700px;">
 
 ---
 
