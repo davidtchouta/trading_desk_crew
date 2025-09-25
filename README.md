@@ -1,94 +1,85 @@
-# Multi Agents Meal Grocery Planner 🥗🛒 with CrewAI
+# 📊 AI-Powered Trading Desk Crew
 
-**Meal Grocery Planner** is an AI-driven application designed to help users automatically generate weekly meal plans, organize grocery shopping lists, validate budget constraints, suggest leftover usage and respect your dietary restrictions (ie : no nuts).  
-The system leverages [CrewAI](https://github.com/joaomdmoura/crewai) to orchestrate multiple specialized **agents** working together in a collaborative workflow.
+Professional-grade **multi-agent system** simulating a trading desk with Trader, Risk Manager, and Compliance functions.
 
----
-
-## 📌 Table of Contents
-- [Overview](#overview)
-- [Architecture](#architecture)
-- [Agents](#agents)
-- [Getting Started](#getting-started)
-- [Development](#development)
-- [Docker Support](#docker-support)
-- [Infrastructure (Terraform)](#infrastructure-terraform)
-- [Tests](#tests)
-- [Documentation](#documentation)
-- [Contributing](#contributing)
-- [License](#license)
+**Screenshot**:  
+![Agent Architecture](docs/screenshots/archi_trading_agent.png)
 
 ---
 
-## Overview
-The **Meal Grocery Planner** automates the process of:
-- Generating personalized meal plans
-- Organizing grocery items by categories
-- Verifying adherence to a defined budget
-- Minimizing waste via leftover reuse
-- Summarizing all steps in a simple, consolidated report
-
-This project demonstrates how **AI Agents** can collaborate under a Crew orchestrator to deliver real-world, production-ready solutions.
-
- ![Multi Agents Overview](docs/screenshots/agents_workflow.png)
+## 🚀 Features
+- **Trader Agent**: Generates trade proposals using live market data (`yfinance`).
+- **Risk Manager**: Validates volatility, exposure, leverage constraints.
+- **Compliance Agent**: Enforces professional regulations from official PDF policies.
+- **Summary Agent**: Produces a consolidated trading decision.
+- **Modular architecture** with CrewAI + Ollama LLM.
+- **Structured Outputs** via Pydantic models (JSON reports).
+- **Directly usable in enterprise contexts**.
 
 ---
 
-## Architecture
-The workflow follows a **sequential process**:
-
-1. **Meal Planner Agent**  
-   Generates a structured meal plan (ingredients, servings, complexity).
-   ![Meal planner](docs/screenshots/meal_plan.png)
-
-2. **Shopping Organizer Agent**  
-   Converts planned meals into a categorized shopping list by store sections.
-    ![Shopping list](docs/screenshots/shopping_list.png)
-
-3. **Budget Advisor Agent**  
-   Checks the grocery list against the available budget and suggests optimizations.
-
-4. **Leftover Agent**  
-   Proposes leftover-based meals to reduce waste.
-
-5. **Summary Agent**  
-   Consolidates all results into a user-friendly output.
-
-📊 **Diagram**:  
-
-![Workflow Architecture](docs/screenshots/archi_agent_meal_manager.png)
+## 🏗️ Architecture Diagram for production on AWS
+![Architecture Overview](docs/screenshots/achi_trading_prod.png)
 
 ---
 
-## Agents
+## 📂 Folder Structure
+```
+.
+├── crew.py                        # CrewBase class, agents & tasks orchestrator
+├── main.py                        # Project entrypoint
+├── config/
+│   ├── agents.yaml                # Agents descriptions (roles, goals, backstory)
+│   └── tasks.yaml                 # Task descriptions (task flow definitions)
+├── src/
+│   └── services/
+│       ├── compliance_rules.pdf   # Compliance documentation
+│       └── risk_management_rules.pdf  # Risk management documentation
+├── tools/
+│   └── yfinance_tool.py           # Custom tool fetching and analyzing stock data
+├── tests/
+│   ├── test_trader.py             # Unit tests for Trader agent
+│   ├── test_risk.py               # Unit tests for Risk Manager
+│   └── test_compliance.py         # Unit tests for Compliance Manager
+├── docs/
+│   ├── agents.md                  # Documentation for each agent
+│   ├── architecture.md            # System architecture (diagrams + explanations)
+│   └── images/                    # Diagrams/illustrations
+│       └── agents_workflow.png
+├── notebooks/                     # Jupyter notebooks (exploration, prototyping)
+│   └── analysis.ipynb
+├── infra/                         # Infrastructure & deployment scripts
+│   ├── docker-compose.yml         # Local container setup
+│   └── k8s/
+│       └── deployment.yaml        # Kubernetes deployment example
+├── .env                           # Private environment variables (not committed)
+├── .env.example                   # Public example env file (reference only)
+├── .gitignore                     # Git ignore rules (.env, .venv, cache etc.)
+├── pyproject.toml                 # Project dependencies & build configuration
+├── LICENSE                        # Open-source license (MIT, Apache, etc.)
+```
 
-### Meal Planner Agent
-- **Purpose**: Creates weekly meal plans (names, servings, difficulty level, ingredients).
-- **Output**: `meals.json`
 
-### Shopping Organizer Agent
-- **Purpose**: Organizes meals into shopping categories (e.g., Produce, Dairy, Meat).
-- **Output**: `shopping_list.json`
+---
 
-### Budget Advisor Agent
-- **Purpose**: Ensures the planned groceries respect the user’s budget, suggests cheaper alternatives.
-- **Output**: `shopping_guide.md`
+Outputs are written into `outputs/` in structured JSON + human-readable summaries.
 
-### Leftover Agent
-- **Purpose**: Generates ideas to reuse leftovers efficiently.
-- **Output**: JSON/Markdown suggestions
+---
 
+## 👔 Enterprise Notes
+- **Compliance & Risk docs** are stored as PDF and versioned in `/src/services/`.  
+- **Auditability**: every agent produces JSON outputs with explicit rule references.  
+- **Extendability**:
+  - Add new PDF docs to cover other desks (e.g. FX, commodities).
+  - Replace `llama2` with larger models (Mixtral, finetuned finance LLMs).  
 
-### Summary Agent
-- **Purpose**: Aggregates results from other agents into a final summary.
-- **Output**: Markdown or JSON
-- For more details, check the [Summary Agent Ouput](outputs/results.md).
+---
 
 
 ## Getting Started
 
 ### Prerequisites
-- Python 3.11+
+- Python 3.12
 - [uv](https://github.com/astral-sh/uv) package manager
 - Optional: Docker & Terraform for infra
 
@@ -96,6 +87,15 @@ The workflow follows a **sequential process**:
 ```bash
 uv sync
 ```
+
+---
+
+Ensure **Ollama is running**:
+```bash
+# for local developement
+ollama serve
+ollama pull llama2
+ollama pull nomic-embed-text
 
 ---
 
@@ -121,6 +121,8 @@ We use pytest for unit testing:
 
 ```bash
 uv run pytest
+# or 
+pytest -v
 ```
 ---
 
@@ -131,13 +133,13 @@ The project includes a Dockerfile to containerize the app.
 Build the Docker image:
 
 ```bash
-docker build -t meal-grocery-planner -f infra/Dockerfile .
+docker build -t trading_multiagent -f infra/Dockerfile .
 ```
 
 Run it :
 
 ```bash
-docker run --rm meal-grocery-planner
+docker run --rm trading_multiagent
 ```
 ---
 
@@ -158,7 +160,7 @@ terraform apply -var-file=environments/dev.tfvars
 Output:
 
 ```bash
-alb_dns_name = meal-grocery-planner-alb-xxxx.eu-west-1.elb.amazonaws.com
+alb_dns_name = trading_multi_agent-alb-xxxx.eu-west-1.elb.amazonaws.com
 ```
 ---
 
