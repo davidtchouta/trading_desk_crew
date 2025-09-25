@@ -1,45 +1,32 @@
-meal_planning_task:
+trading_task:
   description: >
-    Search for the best '{meal_name}' recipe for {servings} people within a {budget} budget.
-    Consider dietary restrictions: {dietary_restrictions} and cooking skill level: {cooking_skill}.
-    Find recipes that match the skill level and provide complete ingredient lists with quantities.
+    Analyse {stock_symbol} market data, with {order_size}, propose a justified order (BUY/SELL/HOLD),
+    based on this {max_risk} and liquidity assessment.
 
   expected_output: >
-    A detailed meal plan with researched ingredients, quantities, and cooking instructions 
-    appropriate for the skill level.
+    A clear order (BUY/SELL/HOLD) with a justification based on the current price and 5-day variation.
   
-shopping_organizer_task:
+risk_manager_task:
   description: >
-    Organize the ingredients from the '{meal_name}' meal plan into a grocery shopping list.
-    Group items by store sections (Produce, Dairy, Meat, Pantry).
-    Estimate quantities for {servings} people.
-    Consider dietary restrictions: {dietary_restrictions}, cooking skill: {cooking_skill}, and respect the budget: {budget}.
+    Assess the robustness and volatility of the Trader's proposal for {stock_symbol} and detect excessive risks.
+    use risk_rules.pdf to check any specific risk criteria restrictions.
 
   expected_output: >
-    Return ONLY a valid JSON object strictly as shopping list grouped by store sections with quantities and prices.
+    An assessment of the proposed order's risk level, including historical volatility and beta analysis. 
+    A recommendation to approve or reject the order based on risk criteria.
 
-
-budget_advisor_task:
+compliance_task:
   description: >
-    Analyze the shopping plan for '{meal_name}' serving {servings} people.
-    Ensure total cost stays within {budget}. Consider dietary restrictions: {dietary_restrictions}.
-    Provide practical money-saving tips and alternative ingredients if needed to meet budget.
-
+    Ensure the Trader's proposal for {stock_symbol} adheres to regulatory standards and internal policies.
+    Use the compliance_rules.pdf to check restrictions, especially regarding GAFAM stocks
+    and the rule that orders larger than 50 shares MUST be rejected.
   expected_output: >
-    A complete shopping guide with detailed prices, budget analysis, and money-saving tips.
-
-leftover_task:
-  description: >
-    Analyze the shopping list for '{meal_name}' and identify ingredients that might result in leftovers or partial usage. 
-    Suggest additional quick meals or recipes that can use these leftover ingredients within the {budget} budget.
-    Consider dietary restrictions: {dietary_restrictions}.
-  expected_output: >
-    A list of bonus recipes and creative uses for leftover ingredients, helping to maximize the grocery budget and minimize waste.
+    A compliance report verifying that the proposed order complies with all relevant regulations and company policies,
+    including any necessary adjustments or rejections.
 
 summary_task:
-  description: >  
-    Compile a comprehensive meal planning report for '{meal_name}' serving {servings} people.
-    Include the meal plan, organized shopping list, budget analysis, money-saving tips, and leftover management strategies.
-    Ensure all dietary restrictions: {dietary_restrictions}, cooking skill: {cooking_skill}, and budget: {budget} are respected.    
+  description: >
+    Summarize the entire decision-making process for {stock_symbol}, including the trader's proposal, risk assessment, and compliance check.  
   expected_output: >
-    A comprehensive meal planning guide that combines all team outputs into one cohesive report.
+    A final summary of the trading decision, highlighting key points from each agent's analysis and the final order decision.
+    Format the output in markdown with important points in bold.

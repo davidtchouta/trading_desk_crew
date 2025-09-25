@@ -1,23 +1,56 @@
-# Architecture
+# 🏗️ System Architecture - Trading Desk Crew
 
-## Overview
-The **Meal Grocery Planner** system is built on a CrewAI structure.  
-It orchestrates several specialized agents, each responsible for a different step of the workflow. The Crew coordinates execution sequentially to produce structured, actionable outputs.
+This section details the architecture of the **multi-agent trading desk**.
 
 ---
 
-## Workflow
-1. **Meal Planner Agent** creates the meal plan (meals, servings, ingredients).  
-2. **Shopping Organizer Agent** transforms the plan into a grocery list, organized by store sections.  
-3. **Budget Advisor Agent** validates the list against a budget and provides recommendations.  
-4. **Leftover Agent** suggests meal adaptations using leftovers to reduce waste.  
-5. **Summary Agent** compiles all results into a final report.  
+## High-Level Overview
+
+![Agent Architecture](screenshots/achi_trading_agent.png)
+
 
 ---
 
-## Diagram
-The following diagram illustrates the architecture and workflow:
+## Data Flow
+1. **Trader Agent** fetches data (YFinance).  
+2. **Risk Manager** validates size, volatility, beta.  
+3. **Compliance Agent** enforces policy docs (PDFSearchTool).  
+4. **Summary Agent** aggregates into a final recommendation.  
 
-![Architecture Diagram](screenshots/archi_agent_meal_manager.png)
+---
 
-Now we're ready to deploy your Agent into the production environment.
+## Tech Stack
+- **Agents Framework**: [CrewAI](https://github.com/joaomdmoura/crewai)  
+- **Vector DB / RAG**: ChromaDB  
+- **LLM**: Ollama (`llama2`)  
+- **Embeddings**: OpenAI or Ollama (`nomic-embed-text`)  
+- **Tools**: 
+  - YFinanceStockAnalysisTool
+  - PDFSearchTool  
+
+---
+
+
+## 📂 Folder Structure
+```
+├── crew.py                # CrewBase class, agents & tasks orchestrator
+├── main.py                # entrypoint
+├── config/agents.yaml     # agents descriptions
+├── config/tasks.yaml      # task descriptions
+├── src/services/
+│   ├── compliance_rules.pdf
+│   └── risk_management_rules.pdf
+├── tests/
+│   ├── test_trader.py
+│   ├── test_risk.py
+│   └── test_compliance.py
+└── docs/
+    ├── agents.md
+    ├── architecture.md
+    └── screenshots/
+```
+
+# Production Architecture 
+
+Coming soon !
+

@@ -3,7 +3,7 @@
 Professional-grade **multi-agent system** simulating a trading desk with Trader, Risk Manager, and Compliance functions.
 
 **Screenshot**:  
-![Agent Architecture](docs/screenshots/archi_trading_agent.png)
+![Agent Architecture](./docs/screenshots/archi_trading_agent.png)
 
 ---
 
@@ -19,7 +19,7 @@ Professional-grade **multi-agent system** simulating a trading desk with Trader,
 ---
 
 ## 🏗️ Architecture Diagram for production on AWS
-![Architecture Overview](docs/screenshots/achi_trading_prod.png)
+![Architecture Overview](./docs/screenshots/achi_trading_prod.png)
 
 ---
 
@@ -183,6 +183,8 @@ uv run pytest
 
 ## License
 This project is licensed under the [MIT License](https://opensource.org/licenses/MIT).
+
+--- 
 
 Author
 Developed by [David TCHATCHOUA](https://frenchtechacademie.fr/tchatchoua) — AI Engineer - AI Agents Builder.
