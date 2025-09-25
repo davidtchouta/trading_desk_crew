@@ -18,7 +18,7 @@ Each agent replicates the **real functions of a professional trading floor**.
 
 **Screenshot**:  
 <!-- ![Trader Console](screenshots/trader_order.png) -->
-<img src="screenshots/trader_order.png" style="height:230px;">
+<img src="screenshots/trader_order.png" style="height:200px;">
 
 ---
 
@@ -31,7 +31,8 @@ Each agent replicates the **real functions of a professional trading floor**.
   - JSON `RiskAssessment` object including volatility, risk_level, comments.
 
 **Screenshot**:  
-![Risk Manager Report](screenshots/risk_manager_check.png)
+<!-- ![Risk Manager Report](screenshots/risk_manager_check.png) -->
+<img src="screenshots/risk_manager_check.png" style="height:200px;">
 
 ---
 
@@ -44,7 +45,8 @@ Each agent replicates the **real functions of a professional trading floor**.
   - JSON `ComplianceReport` indicating approval/rejection and rule violated.
 
 **Screenshot**:  
-![Compliance Report](screenshots/compliance_check.png)
+<!-- ![Compliance Report](screenshots/compliance_check.png) -->
+<img src="screenshots/compliance_check.png" style="height:200px;">
 
 ---
 
@@ -53,4 +55,4 @@ Each agent replicates the **real functions of a professional trading floor**.
 - **Goal**: Consolidate Trader, Risk, and Compliance outputs into a final decision.
 - **Output**: Human-readable and JSON summary.
 
-[Click here to view a sample of summary report](outputs/trading_results.md)
+[Click here to view a sample of summary report](../outputs/trading_results.md)
