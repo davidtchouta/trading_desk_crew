@@ -6,7 +6,7 @@ This section details the architecture of the **multi-agent trading desk**.
 
 ## High-Level Overview
 
-![Agent Architecture](screenshots/achi_trading_agent.png)
+![Agent Architecture](./screenshots/archi_trading_agent.png)
 
 
 ---
@@ -31,26 +31,8 @@ This section details the architecture of the **multi-agent trading desk**.
 ---
 
 
-## 📂 Folder Structure
-```
-├── crew.py                # CrewBase class, agents & tasks orchestrator
-├── main.py                # entrypoint
-├── config/agents.yaml     # agents descriptions
-├── config/tasks.yaml      # task descriptions
-├── src/services/
-│   ├── compliance_rules.pdf
-│   └── risk_management_rules.pdf
-├── tests/
-│   ├── test_trader.py
-│   ├── test_risk.py
-│   └── test_compliance.py
-└── docs/
-    ├── agents.md
-    ├── architecture.md
-    └── screenshots/
-```
 
-# Production Architecture 
+## Production Architecture on AWS
 
-Coming soon !
+<img src="./screenshots/archi_trading_pro.png" style="weight:500px;">
 
