@@ -19,7 +19,8 @@ Professional-grade **multi-agent system** simulating a trading desk with Trader,
 ---
 
 ## 🏗️ Architecture Diagram for production on AWS
-![Architecture Overview](./docs/screenshots/archi_trading_prod.png)
+
+![Architecture Overview](./docs/screenshots/archi_trading_prod.JPG)
 
 ---
 
