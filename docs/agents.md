@@ -18,7 +18,7 @@ Each agent replicates the **real functions of a professional trading floor**.
 
 **Screenshot**:  
 <!-- ![Trader Console](screenshots/trader_order.png) -->
-<img src="screenshots/trader_order.png" style="height:700px;">
+<img src="screenshots/trader_order.png" style="height:500px;">
 
 ---
 
