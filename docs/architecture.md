@@ -33,5 +33,5 @@ This section details the architecture of the **multi-agent trading desk**.
 
 ## Production Architecture on AWS
 
-![Agent Architecture](./screenshots/archi_trading_prod.png)
+![Agent Architecture](./screenshots/archi_trading_prod.JPG)
 
